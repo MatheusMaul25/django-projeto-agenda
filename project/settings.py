@@ -126,3 +126,8 @@ STATIC_ROOT = BASE_DIR / 'static' # Collectstatic
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+try:
+    from project.local_settings import *
+except ImportError:
+    ...
