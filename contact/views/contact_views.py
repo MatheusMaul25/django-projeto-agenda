@@ -34,7 +34,8 @@ def contact(request, contact_id):
 
     context = {
         'contact': single_contact,
-        'site_title': f'{contact_first_name} {contact_last_name} - '
+        'site_title': f'{contact_first_name} {contact_last_name} - ',
+        'full_name': f'{contact_first_name} {contact_last_name} ',
         }
     return render(
         request, 

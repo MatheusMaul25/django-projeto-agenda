@@ -20,6 +20,9 @@ class ContactForm(forms.ModelForm):
     help_text = 'Digíte apenas números',
     )
 
+    picture = forms.ImageField(widget= forms.FileInput(
+        attrs= {'accept': 'image/*',}
+    ))
     # def __init__(self, *args, **kwargs):
     #     super().__init__(*args, **kwargs)
 
@@ -36,30 +39,7 @@ class ContactForm(forms.ModelForm):
             'email',
             'description',
             'category',
+            'picture',
             )
-    def clean_first_name(self) -> dict[str, Any]:
-        first_name = self.cleaned_data.get('first_name')
-        if not first_name.isalpha():
-            raise ValidationError('Primeiro nome deve conter apenas letras!')
-        return first_name
-        
-    def clean_last_name(self) -> dict[str, Any]:
-        last_name = self.cleaned_data.get('last_name')
-        if not last_name.isalpha():
-            raise ValidationError('Segundo nome deve conter apenas letras!')
-        return last_name
-            
-    def clean_phone(self) -> dict[int, Any]:
-         phone = self.cleaned_data.get('phone')
-         if not phone.isdigit():
-             raise ValidationError('Telefone inválido, digíte apenas números')
-         if Contact.objects.filter(phone=phone).exists():
-            raise ValidationError('Telefone já cadastrado')
-         return phone
-    
-    def clean_email(self) -> dict[str, Any]:
-        email = self.cleaned_data.get('email').lower()
-        if Contact.objects.filter(email=email).exists():
-            raise ValidationError('Email já cadastrado')
-        return email
+
     

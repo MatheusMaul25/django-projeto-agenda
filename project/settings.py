@@ -123,8 +123,8 @@ STATICFILES_DIRS = (
     )
 STATIC_ROOT = BASE_DIR / 'static' # Collectstatic
 
-MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
 
 try:
     from project.local_settings import *
