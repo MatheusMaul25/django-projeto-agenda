@@ -37,14 +37,16 @@ def update(request, contact_id):
 
     if request.method == 'POST':
         
-        form = ContactForm(request.POST, instance = contact)
-        print(request.FILES)
+        form = ContactForm(request.POST, request.FILES, instance = contact,)
         if form.is_valid():
+            print('validou')
             contact = form.save(commit=False)
             # contact.show = False
             contact.save()
             return redirect('contact:update', contact_id = contact.pk)
         else:
+            print(form.errors)
+
             context = {
                 'form': form,
                 'form_action': form_action,
