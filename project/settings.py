@@ -126,6 +126,8 @@ STATIC_ROOT = BASE_DIR / 'static' # Collectstatic
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
 
+LOGIN_URL = 'contact:login'
+
 try:
     from project.local_settings import *
 except ImportError:
