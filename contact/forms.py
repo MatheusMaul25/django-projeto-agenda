@@ -3,10 +3,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 from django.core.exceptions import ValidationError
-# from django.core.exceptions import ValidationError
 from contact.models import Contact
 from django.contrib.auth import password_validation
-# from typing import Any
+
 class ContactForm(forms.ModelForm):
     first_name = forms.CharField(widget = forms.TextInput(attrs={
         'placeholder': 'Digíte seu primeiro nome'

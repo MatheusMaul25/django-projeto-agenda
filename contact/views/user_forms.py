@@ -41,6 +41,7 @@ def login_view(request):
         'contact/login.html',
         context)
 
+@login_required
 def logout_view(request):
     auth.logout(request)
     messages.warning(request, 'Saiu!')
@@ -53,6 +54,7 @@ def user_update(request):
     if request.method == 'POST':
         form = RegisterUpdateForm(data= request.POST, instance=request.user)
         if form.is_valid():
+            messages.success(request, 'SUCCESS! Updated user')
             form.save()
             
     context = {
